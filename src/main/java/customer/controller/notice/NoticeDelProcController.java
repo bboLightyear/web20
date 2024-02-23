@@ -1,0 +1,24 @@
+package customer.controller.notice;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import customer.controller.controller;
+import customer.dao.NoticeDao;
+import customer.vo.Notice;
+
+public class NoticeDelProcController implements  controller{
+	
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("NoticeDelProcController");
+		String seq=request.getParameter("c");
+
+		NoticeDao dao=new NoticeDao();
+
+		int delcnt=dao.delete(seq);
+
+		response.sendRedirect("notice.jsp");
+		
+	}
+}
